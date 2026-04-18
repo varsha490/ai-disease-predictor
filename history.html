@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Disease Predictor - History</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">AI Disease Predictor</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/predictor">Predictor</a>
+        <a href="/disease">Disease Info</a>
+        <a href="/history" class="active">History</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+
+    <main class="about-page">
+      <section class="content-card">
+        <div class="history-header">
+          <h1>Prediction History</h1>
+          <button type="button" id="clearHistoryBtn" class="btn danger-outline">Clear History</button>
+        </div>
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
