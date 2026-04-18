@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Disease Predictor - Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">AI Disease Predictor</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/predictor" class="active">Predictor</a>
+        <a href="/disease">Disease Info</a>
+        <a href="/history">History</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+
+    <main class="predictor-page">
+      <section class="predictor-layout">
+        <div class="three-panel">
+          <h2>3D Visualization</h2>
+          <div id="three-container" class="three-container" aria-label="3D rotating cube"></div>
+          <p class="three-hint">Drag with your mouse to rotate</p>
+        </div>
+
+        <div class="symptoms-panel">
+          <h1>Predict Disease</h1>
+
+          <div id="loadingOverlay" class="loading-overlay hidden" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <div class="loading-text">Predicting...</div>
+          </div>
+
+          <form id="symptomsForm">
+            <div class="symptoms-grid">
+              <div class="symptom-item">
+                <input type="checkbox" id="fever" name="symptom" value="fever" />
+                <label for="fever">Fever</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="cough" name="symptom" value="cough" />
+                <label for="cough">Cough</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="sore_throat" name="symptom" value="sore_throat" />
+                <label for="sore_throat">Sore throat</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="runny_nose" name="symptom" value="runny_nose" />
+                <label for="runny_nose">Runny nose</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="sneezing" name="symptom" value="sneezing" />
+                <label for="sneezing">Sneezing</label>
+              </div>
+              <div class="symptom-item">
+                <input
+                  type="checkbox"
+                  id="shortness_of_breath"
+                  name="symptom"
+                  value="shortness_of_breath"
+                />
+                <label for="shortness_of_breath">Shortness of breath</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="fatigue" name="symptom" value="fatigue" />
+                <label for="fatigue">Fatigue</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="headache" name="symptom" value="headache" />
+                <label for="headache">Headache</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="nausea" name="symptom" value="nausea" />
+                <label for="nausea">Nausea</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="vomiting" name="symptom" value="vomiting" />
+                <label for="vomiting">Vomiting</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="diarrhea" name="symptom" value="diarrhea" />
+                <label for="diarrhea">Diarrhea</label>
+              </div>
+              <div class="symptom-item">
+                <input
+                  type="checkbox"
+                  id="abdominal_pain"
+                  name="symptom"
+                  value="abdominal_pain"
+                />
+                <label for="abdominal_pain">Abdominal pain</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="muscle_pain" name="symptom" value="muscle_pain" />
+                <label for="muscle_pain">Muscle pain</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="chills" name="symptom" value="chills" />
+                <label for="chills">Chills</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="body_aches" name="symptom" value="body_aches" />
+                <label for="body_aches">Body aches</label>
+              </div>
+              <div class="symptom-item">
+                <input
+                  type="checkbox"
+                  id="loss_of_appetite"
+                  name="symptom"
+                  value="loss_of_appetite"
+                />
+                <label for="loss_of_appetite">Loss of appetite</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="congestion" name="symptom" value="congestion" />
+                <label for="congestion">Nasal congestion</label>
+              </div>
+              <div class="symptom-item">
+                <input type="checkbox" id="watery_eyes" name="symptom" value="watery_eyes" />
+                <label for="watery_eyes">Watery eyes</label>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Predict</button>
+              <button type="button" id="resetBtn" class="btn secondary">Reset</button>
+            </div>
+          </form>
+
+          <div id="formError" class="form-error" role="alert"></div>
+
+          <div id="resultSection" class="result-section hidden" aria-live="polite">
+            <div class="result-header">
+              <h2>Prediction Result</h2>
+              <div id="riskBadge" class="risk-badge risk-unknown">Risk Level: —</div>
+            </div>
+
+            <div class="result-main">
+              <div class="result-left">
+                <div class="result-disease" id="resultDisease">—</div>
+                <div class="result-confidence">
+                  Confidence: <span id="resultConfidence">—</span>
+                </div>
+                <div class="result-model-accuracy">
+                  Model test accuracy: <span id="resultAccuracy">—</span>
+                </div>
+                <div class="result-explanation" id="resultExplanation"></div>
+                <div class="form-actions">
+                  <button type="button" id="viewDetailsBtn" class="btn secondary hidden">
+                    View Disease Details
+                  </button>
+                </div>
+              </div>
+
+              <div class="chart-wrap">
+                <h3>Probabilities</h3>
+                <canvas id="probabilityChart" class="chart-canvas" width="420" height="240"></canvas>
+              </div>
+            </div>
+
+            <div class="prediction-note">
+              Not a medical diagnosis. Results are estimates from a small demo model.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <div id="symptomTooltip" class="symptom-tooltip hidden" role="tooltip"></div>
+    <script src="/script.js"></script>
+  </body>
+</html>
+
