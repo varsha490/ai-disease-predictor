@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Disease Predictor - Disease Info</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="brand">AI Disease Predictor</div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/predictor">Predictor</a>
+        <a href="/disease" class="active">Disease Info</a>
+        <a href="/history">History</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+
+    <main class="about-page">
+      <section class="content-card">
+        <h1 id="diseasePageTitle">Disease Information</h1>
+        <p id="diseasePageSubtitle">
+          Select symptoms on the predictor page and open disease details to view more information.
+        </p>
+
+        <div class="details-section">
+          <h3>📝 Description</h3>
+          <div id="detailDescription" class="detail-text">—</div>
+        </div>
+
+        <div class="details-section">
+          <h3>🧬 Causes</h3>
+          <div id="detailCauses" class="detail-text">—</div>
+        </div>
+
+        <div class="details-section">
+          <h3>🩺 Symptoms</h3>
+          <div id="detailCommonSymptoms" class="detail-text">—</div>
+        </div>
+
+        <div class="details-section">
+          <h3>💊 Treatment</h3>
+          <div id="detailTreatment" class="detail-text">—</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+  </body>
+</html>
